@@ -42,6 +42,7 @@ function s:WildignoreFromGitignore(...)
       if line =~ '^#' | con | endif
       if line == ''   | con | endif
       if line =~ '^!' | con | endif
+      if line =~ '*,' | con | endif "ignore lines that might end up becoming a match-all config"
       if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
       let igstring .= "," . line
     endfor
